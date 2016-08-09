@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Virtual Keyboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<style media="screen" type="text/css">
+			.keyboard {
+				width: 100%;
+				height: 400px;
+			}
+			.key {
+				width: 30%;
+				height: 50%;
+				background-color : grey;
+				border-color : black;
+				display: inline-block;
+				text-align: center;
+				vertical-align: middle;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+
+			}
+		</style>
+	</head>
+	<body onload="init()">
+		<div class="keyboard">
+			<div class="key">A</div>
+			<div class="key">B</div>
+			<div class="key">C</div>
+		</div>
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+		var socket = io();
+
+		function init() {
+
+
+			$(".keyboard").css('width', $(document).width());
+			$('.keyboard').css('height', $(document).height());
+
+			$('.keyboard').children().each(function(){
+				var key = $(this).text();
+				$(this).on('touchstart', function(ev){
+					console.log('touchstart : '+key);
+					$(this).css('background-color', "black");
+					socket.emit('keyDown', key);
+				});
+				$(this).on('touchend', function(ev){
+					console.log('touchend : '+ key);
+					$(this).css('background-color', 'grey');
+					socket.emit('keyUp', key);
+				});
+
+			});
+
+		}
+
+
+	</script>
+</html>
