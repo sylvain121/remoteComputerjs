@@ -1,5 +1,12 @@
-{ 
-	"name": "VirtualKeyboard", 
-	"version": "0.0.0",
-	"main": "main.js" 
+{
+  "name": "virtual_keyboard",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "virtual remote keyboard build with electronjs ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sylvain121",
+  "email": "sylvain121@gmail.com",
+  "license": "ISC"
 }
