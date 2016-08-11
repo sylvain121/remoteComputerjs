@@ -32,6 +32,7 @@ matrix:
                                                   - nvm install 6
                                                   - npm install electron-builder@next # force install next version to test electron-builder
                                                   - npm install
+                                                  - npm rebuild
                                                   - npm prune
 
                                           script:
