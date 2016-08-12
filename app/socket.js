@@ -6,27 +6,25 @@ var io = require('socket.io')(http);
 const robot = require('robotjs');
 
 
-app.get('/', function(req, res){
-	res.sendFile( __dirname + '/index.html' );
+app.use(express.static('public'));
 
+app.get('/keyBoards', function(req, res){
+	 
 });
 
 io.on('connection', function(socket){
-	console.log('new client');
-
+//TODO count socket connexion
 	socket.on('keyDown',function(key){
-		console.log('key down : '+key);
+		console.log('down : ' + key);
 		robot.keyToggle(key, 'down');
 	});
 	socket.on('keyUp', function(key){
-		console.log('key up : '+key);
 		robot.keyToggle(key, 'up');
 	});
 
 });
 io.on('disconnect', function(){
-	console.log(' user disconnected');
-
+//TODO count socket disconnect
 });
 
 
@@ -34,6 +32,6 @@ io.on('disconnect', function(){
 
 http.listen(3000, function(){
 	console.log('listening on *:3000');
-
+//TODO display http server ready
 
 });

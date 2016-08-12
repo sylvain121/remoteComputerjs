@@ -22,15 +22,16 @@
     "rcedit": "^0.5.1"
   },
   "dependencies": {
+    "electron-json-storage": "^2.0.0",
     "express": "^4.14.0",
     "robotjs": "^0.4.4",
     "socket.io": "^1.4.8"
   },
   "build": {
-	  "appId": "1",
-	  "app-category-type": "utility",
-	  "win": {
-		  "iconUrl": "http://icons.iconarchive.com/icons/icons8/ios7/256/Computer-Hardware-Keyboard-icon.png"
-	  }
+    "appId": "1",
+    "app-category-type": "utility",
+    "win": {
+      "iconUrl": "http://icons.iconarchive.com/icons/icons8/ios7/256/Computer-Hardware-Keyboard-icon.png"
+    }
   }
 }
