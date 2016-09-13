@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./node_modules/.bin/electron ./app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rebuild": "npm rebuild --runtime=electron --target=1.3.2 --disturl=https://atom.io/download/atom-shell --abi=49",
+    "compile": "npm i && npm rebuild --runtime=electron --target=1.3.2 --disturl=https://atom.io/download/atom-shell --abi=49 && npm run-script jpeg-patch",
+    "jpeg-patch": " cp -Rf ./node_modules/jpeg-turbo/lib/binding/electron-v1.3-linux-x64/ ./node_modules/jpeg-turbo/lib/binding/node-v49-linux-x64",
     "postinstall": "install-app-deps",
     "pack": "./node_modules/.bin/build --dir",
     "dist": "./node_modules/.bin/build"
@@ -24,6 +25,7 @@
   "dependencies": {
     "electron-json-storage": "^2.0.0",
     "express": "^4.14.0",
+    "jpeg-turbo": "^0.4.0",
     "robotjs": "^0.4.4",
     "socket.io": "^1.4.8"
   },
