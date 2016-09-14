@@ -15,8 +15,8 @@ let win = null;
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
 
-  capture.setDistantScreenSize(1366, 768);
-  capture.toggle();
+//  capture.setDistantScreenSize(1366, 768);
+//  capture.toggle();
 
 	var os = require('os');
 	var socket = require('./socket');

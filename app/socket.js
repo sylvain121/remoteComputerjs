@@ -6,14 +6,15 @@ var io = require('socket.io')(http);
 const robot = require('robotjs');
 
 
-app.use(express.static('public'));
+app.use(express.static(__dirname+'/public'));
 
 app.get('/keyBoards', function(req, res){
 	 
 });
 
 io.on('connection', function(socket){
-//TODO count socket connexion
+  console.log("new client connection");
+  //TODO count socket connexion
 	socket.on('keyDown',function(key){
 		console.log('down : ' + key);
 		robot.keyToggle(key, 'down');
@@ -25,6 +26,7 @@ io.on('connection', function(socket){
 });
 io.on('disconnect', function(){
 //TODO count socket disconnect
+  console.log("client disconnected");
 });
 
 

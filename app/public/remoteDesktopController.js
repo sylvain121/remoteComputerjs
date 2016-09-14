@@ -11,18 +11,32 @@ window.requestAnimFrame = (function () {
 
 
 
-var App = angular.module("projector", ['ngMaterial']);
-App.controller("screenController", function () {
+var App = angular.module("remoteComputerJS", ['ngMaterial']);
+App.controller("screenController", function ($window) {
+  
+  var socket = io();
+
+  $window.addEventListener("keydown", function(event){
+  socket.emit("keyDown", event.key);
+  });
+
+ $window.addEventListener("keyup", function(event){
+  socket.emit("keyUp", event.key); 
+ });
+
+  $window.addEventListener("mousemove", function(event){
+    console.log(event);
+  });
 
   const DATA_HANDLER_TIMEOUT = 500;
 
   var frameCanvas = document.getElementById("frameCanvas");
   var pointerCanvas = document.getElementById("pointerCanvas");
   frameCanvas.width = screen.width;
-  frameCanvas.height screen.height;
+  frameCanvas.height = screen.height;
   var jpeg = null;
 
-  io.on('frame', function(data){
+  socket.on('frame', function(data){
     jpeg = data; 
   });
 
