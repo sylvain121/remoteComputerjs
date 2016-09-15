@@ -17,11 +17,17 @@ io.on('connection', function(socket){
   //TODO count socket connexion
 	socket.on('keyDown',function(key){
 		console.log('down : ' + key);
-		robot.keyToggle(key, 'down');
+		//robot.keyToggle(key, 'down');
 	});
 	socket.on('keyUp', function(key){
-		robot.keyToggle(key, 'up');
+		//robot.keyToggle(key, 'up');
 	});
+  socket.on("startStream", function(){
+    
+  });
+  socket.on("stopStream", function(){
+    
+  });
 
 });
 io.on('disconnect', function(){

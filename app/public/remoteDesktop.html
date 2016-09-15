@@ -11,14 +11,25 @@
     <link rel="stylesheet" href="angular-material.min.css">
 
 	</head>
-	<body>
+  <body>
+    <div>
+      <select ng-model="currentFPS">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="24">24</option>
+        <option value="30">30</option>
+        <option value="60">60</option>
+      </select>
+      <button ng-click="start()">Start</button>
+      <button ng-click="stop()"></button>
+    </div>
 		<div style="position:relative;" 
 			width="100%" 
 			height="100%" 
 			ng-controller="screenController"> 
 			<canvas style="position:absolute; left:0px; top:0px;" 
 				id="frameCanvas" 
-				width="100%" height="100%" z-index="0"></canvas>
+				width="1366" height="768" z-index="0"></canvas>
 		</div>
 
 

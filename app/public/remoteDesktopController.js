@@ -12,9 +12,18 @@ window.requestAnimFrame = (function () {
 
 
 var App = angular.module("remoteComputerJS", ['ngMaterial']);
-App.controller("screenController", function ($window) {
+App.controller("screenController", function ($scope, $window) {
   
   var socket = io();
+  $scope.currentFPS = 20;
+
+  $scope.start = function() {
+    socket.emit("startStream", $scope.currentFPS)
+  }
+
+  $scope.stop = function() {
+    socket.emit("stopStream", $scope.currentFPS)
+  }
 
   $window.addEventListener("keydown", function(event){
   socket.emit("keyDown", event.key);
